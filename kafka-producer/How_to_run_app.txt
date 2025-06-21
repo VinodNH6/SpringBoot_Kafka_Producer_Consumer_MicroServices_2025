@@ -1,0 +1,65 @@
+
+===============
+My local steps:
+===============
+cd D:\My_Data\Softwares\kafka_2.13-3.2.1
+
+D:\My_Data\Softwares\kafka_2.13-3.2.1\config\zookeeper.properties
+change this content:
+dataDir=D:/My_Data/Softwares/kafka_2.13-3.2.1/vin-zookeeper-data
+
+D:\My_Data\Softwares\kafka_2.13-3.2.1\config\server.properties
+change this content:
+log.dirs=D:/My_Data/Softwares/kafka_2.13-3.2.1/vin-kafka-logs
+
+Now execute batch files one by one and keep then open parallely.
+
+======================================================
+Now, start running Apache kafka on your local machine:
+======================================================
+cd ‪D:\My_Data\Softwares\kafka_2.13-3.2.1
+
+> .\bin\windows\zookeeper-server-start.bat  .\config\zookeeper.properties
+
+> .\bin\windows\kafka-server-start.bat  .\config\server.properties
+
+
+Now, go to "kafka-producer" SpringBoot project or Micro service:
+----------------------------------------------------------------
+- right click on KafkaProducerApplication.java and click "Run As" -> "Java Application"
+- now this microservice is running on 8081 port.
+
+
+Now, go to "kafka-consumer" SpringBoot project or Micro service:
+----------------------------------------------------------------
+- right click on KafkaConsumerApplication.java and click "Run As" -> "Java Application"
+- now this microservice is running on 8082 port.
+
+
+Now, go to Browser and hit this URL to publish message:
+http://localhost:8081/publish/hello-world-from-pramod
+
+
+Now, "Kafka-producer" console shows this in log:
+[Kafka Producer] Sending message: hello-world-from-vinod
+
+
+Now, "Kafka-consumer" console shows this in log:
+[Kafka Consumer] Received message: hello-world-from-vinod
+
+
+So, application is working as expected.
+
+Summary:
+"Kafka-producer" micro-service is publishing message and
+"kafka-consumer" micro-service is consuming the published message. 
+using Apache Kafka.
+
+
+
+
+
+
+
+
+

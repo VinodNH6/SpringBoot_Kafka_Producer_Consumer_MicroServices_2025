@@ -1,0 +1,142 @@
+=========================
+Kafka + spring-boot setup
+=========================
+https://www.youtube.com/watch?v=BwYFuhVhshI
+Channel: AmpCode
+title: 
+Install Apache Kafka on Windows PC | Kafka Installation Step-By-Step Guide
+
+
+Kafka download:
+===============
+Downloaded Kafka 3.2.1 from this site https://kafka.apache.org/downloads
+
+‪D:\My_Data\Softwares\kafka_2.13-3.2.1.tgz
+
+
+
+Install:
+========
+‪D:\My_Data\Softwares\kafka_2.13-3.2.1.tgz
+Just unzip it. 
+‪D:\My_Data\Softwares\kafka_2.13-3.2.1
+
+
+Kafka installation steps:
+=========================
+cd ‪D:\My_Data\Softwares\kafka_2.13-3.2.1
+
+> .\bin\windows\zookeeper-server-start.bat  .\config\zookeeper.properties
+
+> .\bin\windows\kafka-server-start.bat  .\config\server.properties
+
+
+> kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partition 1 --topic vintest
+
+
+> kafka-console-producer.bat --broker-list localhost:9092 --topic vintest
+
+Enter below json one by one and check in kafka-console-consumer console whether you receive them at the consumer end.
+
+{"name":"vinod", "gender": "male"}
+{"name":"sourabh", "gender": "male"}
+{"name":"pramod", "gender": "male"}
+
+
+> kafka-console-consumer.bat --topic vintest --bootstrap-server localhost:9092 --from-beginning 
+
+{"name":"vinod", "gender": "male"}
+{"name":"sourabh", "gender": "male"}
+{"name":"pramod", "gender": "male"}
+
+
+> .\bin\windows\zookeeper-server-stop.bat  .\config\zookeeper.properties
+
+> .\bin\windows\kafka-server-stop.bat  .\config\server.properties
+
+
+My local steps:
+===============
+cd D:\My_Data\Softwares\kafka_2.13-3.2.1
+
+D:\My_Data\Softwares\kafka_2.13-3.2.1\config\zookeeper.properties
+change this content:
+dataDir=D:/My_Data/Softwares/kafka_2.13-3.2.1/vin-zookeeper-data
+
+D:\My_Data\Softwares\kafka_2.13-3.2.1\config\server.properties
+change this content:
+log.dirs=D:/My_Data/Softwares/kafka_2.13-3.2.1/vin-kafka-logs
+
+Now execute batch files one by one and keep then open parallely.
+
+
+
+
+
+Links:
+------
+https://dzone.com/articles/building-kafka-producer-with-spring-boot
+
+
+https://www.youtube.com/watch?v=LfXI307zQxE&list=PLGRDMO4rOGcNiACImre_ljgRnNRWsbPSF&index=4
+//download and install setup apache Kafka.. full steps and details.
+Channel: Java Guides
+Title: Spring Boot Kafka Microservices - #4 - Install and Setup Apache Kafka on Mac and Windows
+
+
+
+https://docs.spring.io/spring-kafka/reference/quick-tour.html
+
+https://medium.com/@issa.khodadadi88/implementing-kafka-producer-and-consumer-in-spring-boot-75796f0ce242
+//It has code examples. for both producer and consumer. 
+
+https://medium.com/@sassiR/building-a-spring-boot-kafka-consumer-application-a-step-by-step-guide-98e8f37ea798
+
+https://medium.com/@issa.khodadadi88/implementing-kafka-producer-and-consumer-in-spring-boot-75796f0ce242
+
+
+https://medium.com/@abhishekranjandev/a-comprehensive-guide-to-integrating-kafka-in-a-spring-boot-application-a4b912aee62e
+
+
+=============
+Best example:
+=============
+https://www.youtube.com/watch?v=9lkjXuYwNlk&list=PLGRDMO4rOGcNiACImre_ljgRnNRWsbPSF&index=13
+
+It has best example to show how to create our own dependancy just like other spring dependancy on spring initializer and import them our other spring boot project.
+
+Question: How to create our own dependancy??
+Solution:
+
+Step1: create your own spring boot project. and create POJOs or methods which needs to be exposed. 
+
+Step2: now its .jar is created. 
+
+Step3: now take a note of groupId, artifactId and version of spring boot project which is exposed from step1. and add these details into pom.xml of any other spring boot project where it needs to be imported.
+
+<dependancies>
+ <dependancy>
+   <groupid>net.javaguides</groupId>
+   <artifactId>base-domains</artifactId>
+   <version>0.0.1-SNAPSHOT</version>
+ </dependancy>
+</dependancies>
+
+
+
+
+Links:
+------
+
+https://docs.spring.io/spring-kafka/reference/kafka/sending-messages.html
+
+https://www.geeksforgeeks.org/java/spring-boot-kafka-producer-example/
+
+https://medium.com/@issa.khodadadi88/implementing-kafka-producer-and-consumer-in-spring-boot-75796f0ce242
+
+
+
+
+
+
+
