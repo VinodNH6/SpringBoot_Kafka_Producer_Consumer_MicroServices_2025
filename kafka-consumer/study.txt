@@ -1,0 +1,11 @@
+https://www.youtube.com/watch?v=hltKsBOdz-o&list=PLGRDMO4rOGcNiACImre_ljgRnNRWsbPSF&index=6
+
+following this link to for kafka example install and execution on eclipse.
+
+https://www.youtube.com/watch?v=9vIXcqrD-8E&list=PLGRDMO4rOGcNiACImre_ljgRnNRWsbPSF&index=15
+
+used this example to create 2 micro services for producer and consumer kafka examples.
+
+https://www.geeksforgeeks.org/java/spring-boot-kafka-producer-example/
+
+
